@@ -28,6 +28,12 @@ a.dropdown-toggle:hover{
   text-decoration: none!important;
 }
 
+a.dropdown-toggle:focus{
+  background-color: #0099FF!important;
+  text-decoration: none!important;
+}
+
+
 .login{
   margin-right: 15px;
   background-color: #12C8FF;
