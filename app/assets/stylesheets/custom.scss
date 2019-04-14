@@ -37,7 +37,7 @@ a.dropdown-toggle:hover{
   color: #ffffff;
   display: inline-block;
   font-size: 1em;
-  border-radius:8px;
+  border-radius: 8px;
 }
 
 .login:hover{
@@ -109,7 +109,7 @@ p {
   color: #fff;
   text-transform: uppercase;
   letter-spacing: -1px;
-  padding:10px 32px;
+  padding: 10px 32px;
   border-radius: 8px;
   font-weight: bold;
 }
@@ -118,3 +118,40 @@ p {
   color: #fff;
   text-decoration: none;
 }
+
+// footer
+footer.jumbotron{
+  margin-bottom: 0;
+  border-radius: 8px;
+}
+
+.box{
+  margin-left: 20px;
+}
+
+.box td{
+  padding-right: 50px;
+}
+
+.box h3{
+  text-align: left;
+	font-size: 20px;
+	font-weight: 500;
+	line-height: 2em;
+	margin: 0;
+	color: #000000;
+}
+.box p{
+  margin: 0;
+  font-size: 0.8em;
+}
+
+.boxp {
+  margin-bottom: 0;
+  text-align: left;
+	color: #6a6a6a;
+	text-decoration: none;
+}
+
+
+

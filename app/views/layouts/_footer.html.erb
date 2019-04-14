@@ -1,13 +1,42 @@
-<footer class="footer">
-  <small>
-    The <a href="https://www.railstutorial.org/">Ruby on Rails Tutorial</a>
-    by <a href="http://www.michaelhartl.com/">Michael Hartl</a>
-  </small>
-  <nav>
-    <ul>
-      <li><%= link_to "About",   about_path %></li>
-      <li><%= link_to "Contact", contact_path %></li>
-      <li><a href="http://news.railstutorial.org/">News</a></li>
-    </ul>
-  </nav>
+<div class = "container">
+<footer class="center jumbotron">
+  
+  <table class = "container-fluid box">
+    <tr>
+      <td><h3>Contact Us</h3></td>
+      <td><h3>General Inquires</h3></td>
+      <td><h3>Userful Links</h3></td>
+      <td><h3>Media</h3></td>
+    </tr>
+    <tr>
+      <td>
+        <p>Tel: 0123456789</p>
+    		<p>Fax: 0123456</p>
+    		<p>junliang.jiang@rmit.edu.au</p>
+      </td>
+      
+      <td>    		
+        <p><%= link_to "Andy Song", '#', class: "boxp" %></p>
+    		<p><%= link_to "Junliang Jiang", '#', class: "boxp" %></p>
+    		<p><%= link_to "Ali", '#', class: "boxp" %></p>
+    	</td>
+    	
+      <td>
+        <p><%= link_to "RMIT Course", '#', class: "boxp" %></p>
+    		<p><%= link_to "RMIT Help Desk", '#', class: "boxp" %></p>
+    		<p><%= link_to "RMIT International", '#', class: "boxp" %></p>
+      </td>
+      
+      <td>
+        <p><%= link_to "Youtube", '#', class: "boxp" %></p>
+    		<p><%= link_to "Twitter", '#', class: "boxp" %></p>
+    		<p><%= link_to "Facebook", '#', class: "boxp" %></p>
+    		<p><%= link_to "Instagram", '#', class: "boxp" %></p>
+    		<p><%= link_to "Skype", '#', class: "boxp" %></p>
+      </td>
+      
+    </tr>
+  </table>
+    	
 </footer>
+</div>
