@@ -1,0 +1,117 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.signupBtn{
+  background-color:#FF5F52;
+}
+
+.signupBtn:hover{
+  background-color:#FFA19A;
+}
+
+.signupBtn:focus, .signupBtn:active{
+  background-color:#BA261A!important;
+}
+
+
+
+.dropdown{
+  background-color:#12C8FF;
+  margin-right: 30px;
+  font-size: 1em;
+  color: #ffffff;
+  padding:1px 1px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.login{
+  margin-right: 15px;
+  background-color: #12C8FF;
+  border: none;
+  padding: 16px 10px;
+  text-align: center;
+  color: #ffffff;
+  display: inline-block;
+  font-size: 1em;
+  border-radius:8px;
+}
+
+.login:hover{
+  background-color: #8FE5FF;
+  text-decoration: none;
+}
+
+.navbar{
+  border:none;
+  background-color:#ffffff;
+}
+
+/* universal */
+
+body {
+  padding-top: 60px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: #777;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+/* header */
+
+#logo {
+  background-color:#12C8FF;
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding:10px 32px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+#logo:hover {
+  color: #fff;
+  text-decoration: none;
+}
