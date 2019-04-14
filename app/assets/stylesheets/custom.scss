@@ -51,6 +51,12 @@ a.dropdown-toggle:focus{
   text-decoration: none;
 }
 
+.login:focus, .login:active{
+  color: #12C8FF;
+  background-color: #DADADA;
+  text-decoration: none;
+}
+
 .navbar{
   border:none;
   background-color:#ffffff;
