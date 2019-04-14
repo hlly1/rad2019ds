@@ -13,8 +13,6 @@
   background-color:#BA261A!important;
 }
 
-
-
 .dropdown{
   background-color:#12C8FF;
   margin-right: 30px;
@@ -23,6 +21,11 @@
   padding:1px 1px;
   border-radius: 8px;
   font-weight: bold;
+}
+
+a.dropdown-toggle:hover{
+  background-color: #8FE5FF!important;
+  text-decoration: none!important;
 }
 
 .login{
