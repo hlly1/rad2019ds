@@ -10,9 +10,40 @@
         </button>'.html_safe, '#' %>
 </div>
 
-<div class="center jumbotron">
-  <h1>Kitty Show</h1>
-  <p>The cat is cute and she likes to sleep all day</p>
+<div class="index-cen">
+  
+  
+<table class = "tableIdx">
+<tr>
+  <td>
+    <h3>View Courses As Guest User</h3>
+    <h2>Browse and view courses as a guest and <br>sign up later.</h2>
+  </td>
+  
+  <td>
+    <h3>Sign In To Your Account</h3>
+    <h2>Updated your courses, rate courses, view <br>coordinator informations.</h2>
+  </td>
+  
+</tr>
 
+<tr>
+  <td>
+    <%= link_to '<button class="btn btn-lg btn-primary browseBtn" type="button">
+    <span class="glyphicon glyphicon-book"></span> Browse all courses
+    </button>'.html_safe, '#' %>
+  </td>
+  
+  <td>
+    <%= link_to '<button class="btn btn-lg btn-primary browseBtn" type="button">
+    <span class="glyphicon glyphicon-user"></span> Log in to your account
+    </button>'.html_safe, '#' %>
+  </td>
+  
+</tr>
+
+</table>
+
+  
 
 </div>

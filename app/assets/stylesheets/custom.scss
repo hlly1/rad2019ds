@@ -1,6 +1,42 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.tableIdx td{
+  padding-right: 50px;
+}
+
+.browseBtn{
+  margin-bottom: 30px;
+  background-color: #1CCC13;
+}
+
+.browseBtn:hover{
+  background-color:#65FF17;
+}
+
+.browseBtn:focus, .browseBtn:active{
+  background-color:#08A100!important;
+}
+
+.index-cen{
+  background-color: #ffffff;
+}
+
+.index-cen label{
+  margin-right: 50px;
+}
+
+.index-cen h3{
+  font-size: 1.5em;
+  font-weight: 600;
+  text-align: left;
+  margin-top: 0;
+}
+.index-cen h2{
+  font-size: 1em;
+  text-align: left;
+}
+
 .signupBtn{
   background-color:#FF5F52;
 }
