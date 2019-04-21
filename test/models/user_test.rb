@@ -2,29 +2,30 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    @user = User.new(name: "Example User", email: "user@rmit.edu.au")
+    @user = User.new(name: "Example User", email: "user@rmit.edu.au",
+                      password: "Abcdefghij123/")
   end
 
   test "should be valid" do
     assert @user.valid?
   end
   
-  test "name should be present" do
+  test "Name cannot be blank" do
     @user.name = "     "
     assert_not @user.valid?
   end
   
-  test "email should be present" do
+  test "Email cannot be blank" do
     @user.email = "     "
     assert_not @user.valid?
   end
   
-  test "name should not be too short" do
+  test "Name is too short" do
     @user.name = "a" * 3
     assert_not @user.valid?
   end
   
-  test "email should not be too short" do
+  test "Email is too short" do
     @user.email = "a" * 3
     assert_not @user.valid?
   end
@@ -60,5 +61,19 @@ class UserTest < ActiveSupport::TestCase
     @user.save
     assert_equal mixed_case_email.downcase, @user.reload.email
   end
+  
+  test "Password cannot be blank" do
+    @user.password = @user.password_confirmation = " " * 6
+    assert_not @user.valid?
+  end
+  
+  # test "Password must contain at least a lowercase letter, a uppercase, a digit, a special character and 8+ characters" do
+  #   invalid_passwds = %w[Abc. abcdefghij Abcdefghij ABcdefghij1 ABcdefghij123
+  #                       abcdefghij1 abcdefghij. abc12. ABcdefghij1~]
+  #   invalid_passwds.each do |invalid_passwd|
+  #     @user.password = invalid_passwd
+  #     assert @user.invalid?, "#{invalid_passwd.inspect} should be valid"
+  #   end    
+  # end
   
 end
