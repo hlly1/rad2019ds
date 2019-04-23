@@ -193,32 +193,34 @@ footer.jumbotron{
   border-radius: 8px;
 }
 
-.box{
-  margin-left: 20px;
+.pull-right{
+  align: right;
 }
 
-.box td{
-  padding-right: 50px;
-}
-
-.box h3{
-  text-align: left;
-	font-size: 20px;
-	font-weight: 500;
-	line-height: 2em;
-	margin: 0;
-	color: #000000;
-}
-.box p{
-  margin: 0;
-  font-size: 0.8em;
+.sendbtn{
+  background-color: transparent;
+  color: #000000;
+  font-weight: 200px;
+  width: auto;
+  height: auto;
+  border: none;
 }
 
 .boxp {
-  margin-bottom: 0;
+  margin: 0;
+  font-size: 1em;
   text-align: left;
 	color: #6a6a6a;
 	text-decoration: none;
+}
+
+.enter{
+  background-color: transparent;
+  border-radius: 8px;
+  border: none;
+  border-bottom: 1px solid #000000;
+  resize: none;
+  
 }
 
 $gray-medium-light: #eaeaea;
@@ -314,3 +316,6 @@ input {
     color: $state-danger-text;
   }
 }
+
+
+

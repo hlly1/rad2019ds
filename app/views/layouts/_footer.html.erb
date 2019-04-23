@@ -1,71 +1,44 @@
 
 <footer class="center jumbotron">
   
-  <table class = "container-fluid box">
-    <tr>
-      <td>
-        <h3>Contact Us</h3>
-        <%= form_tag("#", method: "POST") do %>
-        <p><%= text_field_tag :name, :"", placeholder: "Name" %></p>
-        <p><%= text_field_tag :email, :"", placeholder: "Email" %></p>
-        <%= text_area_tag :message, :"", size: "24x6", placeholder: "Message" %>
-        <p><%= submit_tag("Send") %></p>
-      <% end %>
+<div class = "row boxp">
+  
+  <div class = "col-sm-3">
+    <h3>Contact Us</h3><br>
+    <%= form_tag("#", method: "POST") do %>
+      <%= text_field_tag :name, :"", placeholder: " Name", class: "enter" %>
+      <%= text_field_tag :email, :"", placeholder: " Email", class: "enter" %>
+      <%= text_area_tag :message, :"", size: "24x6", placeholder: " Message", class: "enter" %>
+      <a class = "pull-right"><%= submit_tag "Send", class: "sendbtn" %></a>
+    <% end %>
+    <br>Tel: 0123456789<br>
+		Fax: 0123456<br>
+		junliang.jiang@rmit.edu.au
+  </div>
+ 
+  <div class = "col-sm-3">
+    <h3>General Inquires</h3>
+    <%= link_to "Andy Song", '#', class: "boxp" %><br>
+		<%= link_to "Junliang Jiang", '#', class: "boxp" %><br>
+		<%= link_to "Ali", '#', class: "boxp" %>
+  </div>
+  
+  <div class = "col-sm-3">
+    <h3>Userful Links</h3>
+    <%= link_to "RMIT Course", '#', class: "boxp" %><br>
+		<%= link_to "RMIT Help Desk", '#', class: "boxp" %><br>
+		<%= link_to "RMIT International", '#', class: "boxp" %>
+  </div>
+  
+  <div class = "col-sm-3">    
+    <h3>Media</h3>
+    <%= link_to "Youtube", '#', class: "boxp" %><br>
+		<%= link_to "Twitter", '#', class: "boxp" %><br>
+		<%= link_to "Facebook", '#', class: "boxp" %><br>
+		<%= link_to "Instagram", '#', class: "boxp" %><br>
+		<%= link_to "Skype", '#', class: "boxp" %>
+  </div>
       
-        <p>Tel: 0123456789</p>
-    		<p>Fax: 0123456</p>
-    		<p>junliang.jiang@rmit.edu.au</p>
-      
-      </td>
-      
-      
-      
-      
-      <td>
-        <h3>General Inquires</h3>
-        <p><%= link_to "Andy Song", '#', class: "boxp" %></p>
-    		<p><%= link_to "Junliang Jiang", '#', class: "boxp" %></p>
-    		<p><%= link_to "Ali", '#', class: "boxp" %></p>
-      </td>
-      <td><h3>Userful Links</h3></td>
-      <td><h3>Media</h3></td>
-    </tr>
-    <tr>
-      <!--<td>-->
-        
-      <!--<%= form_tag("#", method: "POST") do %>-->
-      <!--  <p><%= text_field_tag :name, :"", placeholder: "Name" %></p>-->
-      <!--  <p><%= text_field_tag :email, :"", placeholder: "Email" %></p>-->
-      <!--  <%= text_area_tag :message, :"", size: "24x6", placeholder: "Message" %>-->
-      <!--  <p><%= submit_tag("Send") %></p>-->
-      <!--<% end %>-->
-      
-      <!--  <p>Tel: 0123456789</p>-->
-    		<!--<p>Fax: 0123456</p>-->
-    		<!--<p>junliang.jiang@rmit.edu.au</p>-->
-      <!--</td>-->
-      
-     <!-- <td>    		-->
-     <!--   <p><%= link_to "Andy Song", '#', class: "boxp" %></p>-->
-    	<!--	<p><%= link_to "Junliang Jiang", '#', class: "boxp" %></p>-->
-    	<!--	<p><%= link_to "Ali", '#', class: "boxp" %></p>-->
-    	<!--</td>-->
-    	
-     <!-- <td>-->
-     <!--   <p><%= link_to "RMIT Course", '#', class: "boxp" %></p>-->
-    	<!--	<p><%= link_to "RMIT Help Desk", '#', class: "boxp" %></p>-->
-    	<!--	<p><%= link_to "RMIT International", '#', class: "boxp" %></p>-->
-     <!-- </td>-->
-      
-     <!-- <td>-->
-     <!--   <p><%= link_to "Youtube", '#', class: "boxp" %></p>-->
-    	<!--	<p><%= link_to "Twitter", '#', class: "boxp" %></p>-->
-    	<!--	<p><%= link_to "Facebook", '#', class: "boxp" %></p>-->
-    	<!--	<p><%= link_to "Instagram", '#', class: "boxp" %></p>-->
-    	<!--	<p><%= link_to "Skype", '#', class: "boxp" %></p>-->
-     <!-- </td>-->
-      
-    </tr>
-  </table>
+</div>
     	
 </footer>
