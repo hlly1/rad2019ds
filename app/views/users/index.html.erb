@@ -1,0 +1,52 @@
+<% provide(:title, "All Coordinators") %>
+<h1 class = "allco">
+   All Courses
+</h1>
+
+<ul id="myTab" class="nav nav-tabs">
+  <li class="active"><a href="#courses" data-toggle="tab">Courses</a></li>
+	<li><a href="#coordinators" data-toggle="tab">Coordinators</a></li>
+</ul>
+
+
+<div id="myTabContent" class="tab-content">
+  
+  <div class="tab-pane fade in active" id="courses">
+  	<p>iOS 是一个由苹果公司开发和发布的手机操作系统。最初是于 2007 年首次发布 iPhone、iPod Touch 和 Apple 
+  		TV。iOS 派生自 OS X，它们共享 Darwin 基础。OS X 操作系统是用在苹果电脑上，iOS 是苹果的移动版本。</p>
+  </div>
+  
+  <!--Section 2: Coordinators-->
+  
+	<div class="tab-pane fade" id="coordinators">
+		<table class = "listcenter">
+        <% @users.each do |user| %>
+        <tr>
+            <th><%= gravatar_for user %><br></th>
+        </tr>
+        
+        <tr>
+            <td><h5>Coordinator Name: <%= user.name %></h5></td>
+        </tr>
+        
+        <% end %>
+    </table>
+	</div>
+</div>
+
+<script>
+$(function(){
+	$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+		//Get the active tab title from this page
+		var activeTab = $(e.target).text();
+		if(activeTab == "Courses"){
+		  $("h1").html("All Courses");
+		}else if(activeTab == "Coordinators"){
+		  $("h1").html("All Coordinators");
+		}else{
+		  $("h1").html("ERROR");
+		}
+		
+	});
+});
+</script>
