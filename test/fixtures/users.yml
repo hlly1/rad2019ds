@@ -1,1 +1,4 @@
-# empty
+andy:
+  name: Andy Song
+  email: andy.song@rmit.edu.au
+  password_digest: <%= User.digest('password') %>

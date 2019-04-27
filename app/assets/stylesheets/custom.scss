@@ -1,6 +1,24 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.user{
+  background-color: #FF5F52!important;
+  text-decoration: none!important;
+  border-radius: 8px
+  color #ffffff;
+}
+
+.user:hover{
+  background-color: #FFA19A!important;
+  text-decoration: none!important;
+}
+
+.user:focus, .user:active{
+  color: #12C8FF!important;
+  background-color: #BA261A!important;
+  text-decoration: none!important;
+}
+
 .listcenter{
   margin: auto;
 }
