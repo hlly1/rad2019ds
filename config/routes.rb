@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
+  get  '/allcourse', to:  'static_pages#index'
   get  '/signup',  to: 'users#new'
   get  '/tab',  to: 'users#index'
   post '/signup',  to: 'users#create'

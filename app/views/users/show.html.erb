@@ -1,11 +1,78 @@
-<% provide(:title, @user.name) %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %> 
-      </h1>
-    </section>
-  </aside>
+<!--<% provide(:title, @user.name) %>-->
+<!--<div class="row">-->
+<!--  <aside class="col-md-4">-->
+<!--    <section class="user_info">-->
+<!--      <h1>-->
+<!--        <%= gravatar_for @user %>-->
+<!--        <%= @user.name %> -->
+<!--      </h1>-->
+<!--    </section>-->
+<!--  </aside>-->
+<!--</div>-->
+
+<% provide(:title, "All Coordinators") %>
+<h1 class = "allco">
+   All Courses
+</h1>
+
+<ul id="myTab" class="nav nav-tabs">
+  <li class="active"><a href="#courses" data-toggle="tab">Courses</a></li>
+	<li><a href="#coordinators" data-toggle="tab">Coordinators</a></li>
+</ul>
+
+
+<div id="myTabContent" class="tab-content">
+  
+  <div class="tab-pane fade in active" id="courses">
+  	<% @users.each do |user| %>
+       
+      <%= gravatar_for user %>
+      Coordinator Name: <%= user.name %>
+      <% user.courses.each do |course| %>
+        <%= course.name %>
+        <% course.locations.each do |location| %>
+        <%= location.name %><br>
+        <% end %>
+        
+        <% course.categories.each do |category| %>
+        <%= category.name %><br>
+        <% end %>
+        
+      <% end %>
+    <% end %>
+  </div>
+  
+  <!--Section 2: Coordinators-->
+  
+	<div class="tab-pane fade" id="coordinators">
+		<table class = "listcenter">
+        <% @users.each do |user| %>
+        <tr>
+            <th><%= gravatar_for user %><br></th>
+        </tr>
+        
+        <tr>
+            <td><h5>Coordinator Name: <%= user.name %></h5></td>
+        </tr>
+        
+        <% end %>
+    </table>
+	</div>
 </div>
+
+<script>
+$(function(){
+	$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+		//Get the active tab title from this page
+		var activeTab = $(e.target).text();
+		if(activeTab == "Courses"){
+		  $("h1").html("All Courses");
+		}else if(activeTab == "Coordinators"){
+		  $("h1").html("All Coordinators");
+		}else{
+		  $("h1").html("ERROR");
+		}
+		
+	});
+});
+</script>

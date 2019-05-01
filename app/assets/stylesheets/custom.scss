@@ -1,6 +1,26 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.coname{
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.couser{
+  margin-bottom: 20px;
+}
+.bo{
+  border-bottom: 1px solid #DADADA;
+}
+.infoback{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #DADADA;
+  padding-left: 30px;
+  padding-bottom: 30px;
+  max-width: 500px;
+  border-radius: 8px;
+}
+
 .user{
   background-color: #FF5F52!important;
   text-decoration: none!important;
