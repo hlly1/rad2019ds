@@ -1,5 +1,9 @@
+<% if session[:user_id] %>
+  <% controller.redirect_to allcourse_path %>
+<% else %>
 <% provide(:title, "Home") %>
 <div class="center jumbotron">
+  
   <h1>Welcome to the Your Course App</h1>
 
   <h2>
@@ -44,6 +48,5 @@
 
 </table>
 
-  
-
 </div>
+<% end %>

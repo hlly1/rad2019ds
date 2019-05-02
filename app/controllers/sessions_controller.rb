@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       # login and redirect to user page
       flash[:success] = "Login successfully!"
       log_in user
-      redirect_to tab_path
+      redirect_to allcourse_path
     else
       # create an error message
       flash.now[:danger] = 'Invalid email/password combination'

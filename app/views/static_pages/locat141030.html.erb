@@ -1,50 +1,48 @@
-<% provide(:title, "All Courses") %>
-<h1 class = "allco">
-   All Courses
-</h1>
+<% provide(:title, "14.10.30") %>
+<h1 class = "allco">Courses scheduled in Location 14.10.30</h1>
 
 <ul id="myTab" class="nav nav-tabs">
   <li class="active"><a href="#courses" data-toggle="tab">Courses</a></li>
 	<li><a href="#coordinators" data-toggle="tab">Coordinators</a></li>
 </ul>
 
-
 <div id="myTabContent" class="tab-content">
-  
-  <div class="tab-pane fade in active" id="courses">
-  	<% @courses.each do |course| %>
-    	 <div class = "row bo">
-        <div class = "col-sm-3">
-          <br>
-      		<table class = "listcenter ">
-              <tr>
-                  <th><%= gravatar_for course.user %><br></th>
-              </tr>
-              <tr>
-                  <td><h5>Coordinator Name: <%= course.user.name %></h5></td>
-              </tr>
-          </table>
-        </div>
- 
+
+        <div class="tab-pane fade in active" id="courses">
+            <% @locations.each do |location| %>
+              <% if location.name == "14.10.30" %>
+            <div class = "row bo">
+              <div class = "col-sm-3">
+                <br>
+            		<table class = "listcenter ">
+                    <tr>
+                        <th><%= gravatar_for location.courses[0].user %><br></th>
+                    </tr>
+                    <tr>
+                        <td><h5>Coordinator Name: <%= location.courses[0].user.name %></h5></td>
+                    </tr>
+                </table>
+              </div>
+        
       <div class = "col-sm-9 infoback">
         <br>
-            <%= link_to course.name, '#',class:"coname" %><br><br>
+            <%= link_to location.courses[0].name, '#',class:"coname" %><br><br>
             <span>
             Category: 
-            <% course.categories.each do |category| %>
+            <% location.courses[0].categories.each do |category| %>
             <%= link_to category.name,'#' %>&nbsp &nbsp
             <% end %>
             </span>
             <br><br>
             <span>
             Location: 
-            <% course.locations.each do |location| %>
-            <%= link_to location.name, '#' %>&nbsp &nbsp
+            <% location.courses[0].locations.each do |lo| %>
+            <%= link_to lo.name, '#' %>&nbsp &nbsp
             <% end %>
             </span>
             <br><br>
             <span class="timestamp">
-             <%= time_ago_in_words(course.created_at) %> ago.
+             <%= time_ago_in_words(location.courses[0].created_at) %> ago.
             </span>
             <span class = "pull-right">
               <a><span class="glyphicon glyphicon-thumbs-up">0</span></a>&nbsp &nbsp &nbsp
@@ -52,11 +50,10 @@
             </span>
       </div>
     </div>
-    <% end %>
-    
-    </div>
- 
-  
+  <% end %>
+<% end %>
+</div>
+
   <!--Section 2: Coordinators-->
   
 	<div class="tab-pane fade" id="coordinators">
@@ -81,7 +78,7 @@ $(function(){
 		//Get the active tab title from this page
 		var activeTab = $(e.target).text();
 		if(activeTab == "Courses"){
-		  $("h1").html("All Courses");
+		  $("h1").html("Courses scheduled in Location 14.10.30");
 		}else if(activeTab == "Coordinators"){
 		  $("h1").html("All Coordinators");
 		}else{
