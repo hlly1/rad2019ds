@@ -15,7 +15,7 @@
   	<% @courses.each do |course| %>
     	 <div class = "row bo">
         <div class = "col-sm-3">
-          <br>
+          <br><br>
       		<table class = "listcenter ">
               <tr>
                   <th><%= gravatar_for course.user %><br></th>
@@ -29,6 +29,11 @@
       <div class = "col-sm-9 infoback">
         <br>
             <%= link_to course.name, '#',class:"coname" %><br><br>
+            <span>
+              Prerequisite:
+              <%= course.prerequisite %>
+            </span>
+            <br><br>
             <span>
             Category: 
             <% course.categories.each do |category| %>
