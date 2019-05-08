@@ -8,9 +8,19 @@
 <%= render 'layouts/header' %>
     <div class="container">
       
+      <!--Adding 'close' to flash notice-->
       <% flash.each do |message_type, message| %>
-        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+        <% alert_class = case message_type
+                         when :notice then "success"
+                         when :alert then "danger"
+                         else message_type
+                         end %>
+        <%= content_tag :div, class: "alert alert-#{alert_class}" do %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <%= message %>
+        <% end %>
       <% end %>
+
       
       <%= yield %>
       <%= render 'layouts/footer' %>

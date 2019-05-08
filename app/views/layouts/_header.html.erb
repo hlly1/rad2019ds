@@ -15,6 +15,10 @@
               <li><%= link_to "Java", '#' %></li>
               <li><%= link_to "Full Stack Dev", '#' %></li>
               <li><%= link_to "IOS Engineering", '#' %></li>
+              <% if session[:user_id] %>
+              <li class="divider"></li>
+              <li><%= link_to "Create Category", addcategory_path %></li>
+              <% end %>               
             </ul>
         </li>
         
@@ -28,6 +32,10 @@
               <li><%= link_to "14.10.31", locat141031_path %></li>
               <li><%= link_to "14.08.26", locat140826_path %></li>
               <li><%= link_to "14.10.30", locat141030_path %></li>
+              <% if session[:user_id] %>
+              <li class="divider"></li>
+              <li><%= link_to "Create Location", addlocation_path %></li>
+              <% end %>              
             </ul>
         </li>
         

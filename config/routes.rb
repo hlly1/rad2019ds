@@ -6,10 +6,13 @@ Rails.application.routes.draw do
   get  '/locat141030',  to:  'static_pages#locat141030'
   get  '/web',  to:  'static_pages#web'
   get  '/signup',  to: 'users#new'
-  get  '/tab',  to: 'users#index'
   post '/signup',  to: 'users#create'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
+  get  '/addlocation',  to: 'locations#new'
+  post '/addlocation',  to: 'locations#create'
+  get  '/addcategory',  to: 'categories#new'
+  post '/addcategory',  to: 'categories#create'
   resources :users
 end

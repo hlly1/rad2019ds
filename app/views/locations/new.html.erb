@@ -1,0 +1,15 @@
+<% provide(:title, "Create Location") %>
+<h1 class = "allco">Create a new location</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@location, url: addlocation_path) do |f| %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.submit "Create new location", class: "btn btn-primary regbtn" %>
+    <% end %>
+  </div>
+</div>
+<br><br>
