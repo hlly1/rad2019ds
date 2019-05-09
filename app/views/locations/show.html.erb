@@ -1,6 +1,8 @@
 <% provide(:title, @location.name) %>
 <h1 class = "allco">Courses scheduled in Location <%= @location.name %></h1>
-
+<% if !@location.courses.any? %>
+  <h3>There are no courses scheduled in Location <%= @location.name %>, please add it via New Course</h3>
+<% else %>
 <ul id="myTab" class="nav nav-tabs">
   <li class="active"><a href="#courses" data-toggle="tab">Courses</a></li>
 	<li><a href="#coordinators" data-toggle="tab">Coordinators</a></li>
@@ -71,7 +73,7 @@
     </table>
 	</div>
 </div>
-
+<% end %>
 <script>
 $(function(){
 	$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
