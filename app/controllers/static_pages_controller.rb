@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
+    
   end
 
   def web
@@ -26,4 +27,8 @@ class StaticPagesController < ApplicationController
     @users = User.all
     @courses = Course.all
   end
+  
+  
+  
+  
 end

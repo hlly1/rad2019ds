@@ -1,6 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
 .coname{
   font-size: 1.5em;
   font-weight: bold;
@@ -355,5 +356,14 @@ input {
   }
 }
 
+a:hover +span+ i, /* when link is hovered select i */
+a + span:hover+ i, /* when space after link is hovered select i */
+a + span + i:hover { /* when icon is hovered select i */
+  visibility: visible;
+  font-size: 1.5em;
+}
 
+a +span+ i { /* in all other case hide it */
+  visibility: hidden;
+}
 

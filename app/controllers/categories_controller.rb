@@ -1,4 +1,10 @@
 class CategoriesController < ApplicationController
+  def show
+    @category = Category.find_by(name: params[:name])
+    @categories = Category.all
+    @users = User.all
+  end
+  
   
   def new
      @category = Category.new
