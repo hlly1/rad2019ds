@@ -15,4 +15,9 @@ class User < ApplicationRecord
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
+  
+  def added_in?(course)
+    self.courses.include?(course)
+  end
+  
 end

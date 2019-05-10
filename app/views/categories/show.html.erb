@@ -32,14 +32,14 @@
             <span>
             Category: 
             <% category.courses[0].categories.each do |category| %>
-            <%= link_to category.name,'#' %>&nbsp &nbsp
+            <%= link_to category.name, categories_path(category.name) %>&nbsp &nbsp
             <% end %>
             </span>
             <br><br>
             <span>
             Location: 
             <% category.courses[0].locations.each do |lo| %>
-            <%= link_to lo.name, '#' %>&nbsp &nbsp
+            <%= link_to lo.name, locations_path(location.id) %>&nbsp &nbsp
             <% end %>
             </span>
             <br><br>

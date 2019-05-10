@@ -1,6 +1,20 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.catelo{
+  margin: auto;
+  padding: auto;
+}
+
+.greyback{
+  padding: 30px;
+  background-color: #ECECEC;
+  border-radius: 8px;
+}
+
+.noresize{
+  resize: none;
+}
 
 .coname{
   font-size: 1.5em;
