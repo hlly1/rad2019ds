@@ -20,5 +20,10 @@ Rails.application.routes.draw do
   get  '/addcategory',  to: 'categories#new'
   post '/addcategory',  to: 'categories#create'
   resources :users, :categories, :locations
+  resources :courses do
+  	member do
+      post :votelike, :votedislike
+    end
+  end
 
 end
