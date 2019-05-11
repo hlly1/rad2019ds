@@ -1,9 +1,23 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.fbold{
+  font-weight: bold;
+  font-size: 1.2em;
+  border-top: 20px;
+}
+
 .catelo{
   margin: auto;
   padding: auto;
+}
+.col-md-3{
+  padding-right: 0px;
+  margin-right: 0px;
+  width: 50%;
+}
+.catename{
+  padding-left: 0px;
 }
 
 .greyback{

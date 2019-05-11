@@ -1,7 +1,9 @@
 class CoursesController < ApplicationController
-  before_action :set_course_info, only: [:show, :create,:new]
+  before_action :set_course_info, only: [:show, :create, :new, :edit]
   before_action :set_course, only: [:votelike, :votedislike]
+  before_action :find_course, only: [:edit, :update]
   
+
   def show
     @course = Course.find_by(name: params[:name])
   end
@@ -47,13 +49,14 @@ class CoursesController < ApplicationController
   def new
     @course = Course.new
   end
+  
+  def edit
+  end
 
-  def update  
-    params[:course][:category_ids] ||= []
-    @course = Course.find(params[:id])  
-    if @course.update_attributes(params[:course])  
+  def update
+    if @course.update(course_params)  
       flash[:notice] = 'Course was successfully updated.'  
-      redirect_to :action => 'show', :id => @course  
+      redirect_to 'show'
     else  
       render 'edit'  
     end  
@@ -74,13 +77,17 @@ class CoursesController < ApplicationController
   
   private
     def course_params
-      params.require(:course).permit(:name,:prerequisite,:description,:user_id,:category_ids,:location_ids)
+      params.require(:course).permit(:name,:prerequisite,:description,:user_id,:category_ids,:location_ids,:avatar)
     end
   
     def set_course
       @course_id = Course.find(params[:id])
     end
-  
+    
+    def find_course
+      @course = Course.find(params[:id])
+    end
+    
     def set_course_info
       @categories = Category.all
       @locations = Location.all    

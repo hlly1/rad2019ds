@@ -33,7 +33,7 @@
  
       <div class = "col-sm-9 infoback">
         <br>
-            <%= link_to course.name, '#',class:"coname" %><br><br>
+            <%= link_to course.name, courses_path(course.name),class:"coname" %><br><br>
             <span>
               Prerequisite:
               <%= course.prerequisite %>
@@ -59,6 +59,10 @@
             <span class = "pull-right">
               <%= link_to "<span class='glyphicon glyphicon-thumbs-up'>#{a}</span>".html_safe, votelike_course_path(course), method: :post %>&nbsp &nbsp &nbsp
               <%= link_to "<span class='glyphicon glyphicon-thumbs-down'>#{b}</span>".html_safe, votedislike_course_path(course), method: :post %>
+            </span>
+            
+            <span>
+              <%= image_tag(course.avatar_url.to_s, size: "130") %>
             </span>
       </div>
     </div>

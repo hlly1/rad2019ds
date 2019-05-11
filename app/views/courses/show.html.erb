@@ -1,0 +1,44 @@
+<% provide(:title, @course.name) %>
+<h1 class = "allco"><%= @course.name %></h1>
+
+<div class = "row">
+  <div class = "col-sm-7">
+    <p class = "fbold">Prerequisite: <%= @course.prerequisite %>
+    <%= link_to '<button class="btn btn-lg btn-primary regbtn pull-right" type="button">
+     Edit this course</button>'.html_safe, edit_course_url(@course.id) %>
+    </p>
+    <div class = "col-sm-12 greyback">
+      <span>
+      Category: 
+      <% @course.categories.each do |category| %>
+      <%= link_to category.name, categories_path(category.name) %>&nbsp &nbsp
+      <% end %>
+      </span>
+      <br><br>
+      <span>
+      Location: 
+      <% @course.locations.each do |lo| %>
+      <%= link_to lo.name, locations_path(lo.id) %>&nbsp &nbsp
+      <% end %>
+      </span>
+      <br><br>
+      <span>
+        Description:<br>
+      <%= @course.description %>
+      </span>
+    </div>
+  </div>
+  
+  <div class = "col-sm-5">
+    <br>
+  	<table class = "listcenter ">
+        <tr>
+            <th><%= gravatar_for @course.user %><br></th>
+        </tr>
+        <tr>
+            <td><h5>Brought to you by: <%= @course.user.name %></h5></td>
+        </tr>
+    </table>
+  </div>
+</div>
+<br><br><br><br>

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get  '/allcourse', to:  'static_pages#index'
   get '/categories/:name', to: 'categories#show', as: 'categories'
   get '/locations/:id', to: 'locations#show', as: 'locations'
+   get '/courses/:name', to: 'courses#show', as: 'courses'
   
   get  '/signup',  to: 'users#new'
   post '/signup',  to: 'users#create'
