@@ -5,7 +5,7 @@
   </div>
   <div class="col-md-6 col-md-offset-3 greyback">
     
-    <%= form_for(@course, url: newcourse_path) do |f| %>
+    <%= form_for @course do |f| %>
       <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control' %>
 
@@ -14,14 +14,17 @@
       
       <%= f.hidden_field :user_id, :value => current_user.id %>
       <%= f.label :description %>
-      <%= f.text_area :description,class: 'form-control noresize', size: '50x10' %>
+      <%= f.text_area :description,class: 'form-control noresize', 
+      size: '50x10' %>
+      
       <div class = "col-md-1">
       Category:
       </div>
       <div class = "col-md-6">
       <% @categories.each do |category| %>
         <div class = "col-md-3">
-        <%= check_box_tag 'course[category_ids][]', category.id %>
+        <%= check_box_tag 'course[category_ids][]', category.id,
+            @course.category_ids.include?(category.id) %>
         </div>
         <div class = "col-md-3 catename">
         <%= category.name %></div>
@@ -38,7 +41,8 @@
       <div class = "col-md-6">
       <% @locations.each do |location| %>
         <div class = "col-md-3">
-        <%= check_box_tag 'course[location_ids][]', location.id %>
+        <%= check_box_tag 'course[location_ids][]', location.id,
+            @course.location_ids.include?(location.id)%>
         </div>
         <div class = "col-md-3">
         <%= location.name %></div>

@@ -1,11 +1,22 @@
 <% provide(:title, @course.name) %>
 <h1 class = "allco"><%= @course.name %></h1>
 
+<% a, b = 0, 0 %>
+
+<% Vote.where(course: @course.id).each do |vote| %>
+  <% a += vote.like %>
+  <% b += vote.dislike %>
+<% end %>
+
 <div class = "row">
   <div class = "col-sm-7">
     <p class = "fbold">Prerequisite: <%= @course.prerequisite %>
-    <%= link_to '<button class="btn btn-lg btn-primary regbtn pull-right" type="button">
-     Edit this course</button>'.html_safe, edit_course_url(@course.id) %>
+      <% if logged_in? %>
+        <% if @course.user == current_user %>
+          <%= link_to '<button class="btn btn-lg btn-primary regbtn pull-right" type="button">
+           Edit this course</button>'.html_safe, edit_course_url(@course.id) %>
+         <% end %>
+      <% end %>
     </p>
     <div class = "col-sm-12 greyback">
       <span>
@@ -26,9 +37,17 @@
         Description:<br>
       <%= @course.description %>
       </span>
+      <br><br>
+      <span class = "pull-right">
+        <%= link_to "<span class='glyphicon glyphicon-thumbs-up'>#{a}</span>".html_safe, votelike_course_path(@course), method: :post %>&nbsp &nbsp &nbsp
+        <%= link_to "<span class='glyphicon glyphicon-thumbs-down'>#{b}</span>".html_safe, votedislike_course_path(@course), method: :post %>
+      </span>
+      
     </div>
+      <%= link_to '<button class="btn btn-lg btn-primary" type="button">
+       Return to Courses List</button>'.html_safe, allcourse_path %>
   </div>
-  
+<% a, b = 0, 0 %>
   <div class = "col-sm-5">
     <br>
   	<table class = "listcenter ">

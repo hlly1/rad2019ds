@@ -8,8 +8,11 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX, :message => "Registration only open for RMIT staff"},
                     uniqueness: { case_sensitive: false }
   has_secure_password
+  VALID_PASSWD_REGEX = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,50}$/
+
+  validates :password, presence: true, length: { minimum: 8 },
+                       format: { with: VALID_PASSWD_REGEX, :message => "is not correct", :multiline => true}
   
-  validates :password, presence: true, length: { minimum: 8 }
   
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
