@@ -2,19 +2,20 @@
 <footer class="center jumbotron">
   
 <div class = "row boxp">
+  <%= render 'user_mailer/contact_us' %>
   
-  <div class = "col-sm-3">
-    <h3>Contact Us</h3><br>
-    <%= form_tag("#", method: "POST") do %>
-      <%= text_field_tag :name, :"", placeholder: " Name", class: "enter" %>
-      <%= text_field_tag :email, :"", placeholder: " Email", class: "enter" %>
-      <%= text_area_tag :message, :"", size: "24x6", placeholder: " Message", class: "enter" %>
-      <a class = "pull-right"><%= submit_tag "Send", class: "sendbtn" %></a>
-    <% end %>
-    <br>Tel: 0123456789<br>
-		Fax: 0123456<br>
-		junliang.jiang@rmit.edu.au
-  </div>
+  <!--<div class = "col-sm-3">-->
+  <!--  <h3>Contact Us</h3><br>-->
+  <!--  <#%= form_tag("#", method: "POST") do %>-->
+  <!--    <#%= text_field_tag :name, :"", placeholder: " Name", class: "enter" %>-->
+  <!--    <#%= text_field_tag :email, :"", placeholder: " Email", class: "enter" %>-->
+  <!--    <#%= text_area_tag :message, :"", size: "24x6", placeholder: " Message", class: "enter" %>-->
+  <!--    <a class = "pull-right"><#%= submit_tag "Send", class: "sendbtn" %></a>-->
+  <!--  <#% end %>-->
+  <!--  <br>Tel: 0123456789<br>-->
+		<!--Fax: 0123456<br>-->
+		<!--junliang.jiang@rmit.edu.au-->
+  <!--</div>-->
  
   <div class = "col-sm-3">
     <h3>General Inquires</h3>

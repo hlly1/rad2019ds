@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
   
-  get  '/allcourse', to:  'static_pages#index'
+  get  '/allcourse', to:  'courses#index'
   get '/categories/:name', to: 'categories#show', as: 'categories'
   get '/locations/:id', to: 'locations#show', as: 'locations'
-   get '/courses/:name', to: 'courses#show', as: 'courses'
   
   get  '/signup',  to: 'users#new'
   post '/signup',  to: 'users#create'

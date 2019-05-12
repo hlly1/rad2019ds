@@ -1,11 +1,16 @@
 class CoursesController < ApplicationController
   before_action :set_course_info, only: [:show, :create, :new, :edit]
   before_action :set_course, only: [:votelike, :votedislike]
-  before_action :find_course, only: [:edit, :update]
+  before_action :find_course, only: [:show, :edit, :update]
   before_action :user_validate, only: [:edit]
-
+  
+  def index
+    @courses = Course.all
+    @users = User.all
+  end
+  
   def show
-    @course = Course.find_by(name: params[:name])
+    
   end
   
   def votelike
@@ -58,7 +63,7 @@ class CoursesController < ApplicationController
     @course.location_ids = params[:course][:location_ids]
     if @course.update(course_params)  
       flash[:success] = 'Course was successfully updated.'  
-      redirect_to courses_path(@course.name)
+      redirect_to @course
     else  
       render 'edit'  
     end  
@@ -71,7 +76,7 @@ class CoursesController < ApplicationController
     if @course.save
       # sign up successfully
       flash[:success] = "Course added successfully!"
-      redirect_to allcourse_path
+      redirect_to @course
     else
       render 'new'
     end
@@ -97,7 +102,7 @@ class CoursesController < ApplicationController
   
     def user_validate
       if !(logged_in? && current_user == @course.user)
-        redirect_to courses_path(@course.name)
+        redirect_to @course
       end
     end
   
