@@ -4,7 +4,10 @@
   <%= render 'shared/error_for_course' %>
   </div>
   <div class="col-md-6 col-md-offset-3 greyback">
-    
+    <% usernames = [] %>
+    <% User.order(:id).each do |user| %>
+    <% usernames << user.name %>
+    <% end %>
     <%= form_for course do |f| %>
       <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control' %>
@@ -12,7 +15,12 @@
       <%= f.label :prerequisite %>
       <%= f.text_field :prerequisite, class: 'form-control' %>
       
+      <% if current_user.isadmin == 1 %>
+      <label>Coordinator</label>
+      <%= f.collection_select(:user_id, User.all, :id, :name, :prompt => "Coordinator Assigned to")  %>
+      <% else %>
       <%= f.hidden_field :user_id, :value => current_user.id %>
+      <% end %>
       <%= f.label :description %>
       <%= f.text_area :description,class: 'form-control noresize', 
       size: '50x10' %>

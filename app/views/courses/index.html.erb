@@ -60,9 +60,17 @@
               <%= link_to "<span class='glyphicon glyphicon-thumbs-up'>#{a}</span>".html_safe, votelike_course_path(course), method: :post %>&nbsp &nbsp &nbsp
               <%= link_to "<span class='glyphicon glyphicon-thumbs-down'>#{b}</span>".html_safe, votedislike_course_path(course), method: :post %>
             </span>
-            
+            <br><br>
+            <% if logged_in? %>
+              <% if current_user.isadmin == 1 %>      
+                <span class = "pull-right">
+                  <%= link_to "delete", course, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </span>
+              <% end %>
+            <% end %>
+  
             <span>
-              <%= image_tag(course.avatar_url.to_s, size: "130") %>
+              <%= image_tag(course.avatar_url.to_s, size: "130") if course.avatar_url.present?  %>
             </span>
       </div>
     </div>
@@ -81,7 +89,14 @@
         </tr>
         
         <tr>
-            <td><h5>Coordinator Name: <%= user.name %></h5></td>
+            <td><h5>Coordinator Name: <%= user.name %>&nbsp&nbsp
+                  <% if logged_in? %>
+                    <% if current_user.isadmin == 1 %>            
+                      <%= link_to "delete", user, method: :delete, data:{confirm:"Are you sure?"} %>
+                    <% end %>
+                  <% end %>
+                </h5></td>
+
         </tr>
         
         <% end %>

@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :users, :categories, :locations
   resources :courses do
   	member do
-      post :votelike, :votedislike
+      post :votelike, :votedislike, :current_votes_delete
     end
   end
 

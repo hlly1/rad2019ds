@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
-  
+  before_action :set_user, only: [:destroy]
   def index
     @users = User.all
   end
+  
+  def edit
+    @user = User.find(params[:id])
+  end  
   
   def show
     @users = User.all
@@ -26,10 +30,26 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
+  
+  def destroy
+    if @user.isadmin == 0
+      @user.destroy
+      flash[:success] = 'Coordinator deleted successfully!'
+      redirect_back(fallback_location: root_path)
+    elsif @user.isadmin == 1
+      flash[:danger] = "Admin cannot be deleted!"
+      redirect_back(fallback_location: root_path)
+    end
+  end
 
   private
 
     def user_params
       params.require(:user).permit(:name, :email, :password)
     end
+    
+    def set_user
+      @user = User.find(params[:id])
+    end
+    
 end

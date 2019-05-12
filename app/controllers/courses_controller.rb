@@ -1,13 +1,27 @@
 class CoursesController < ApplicationController
-  before_action :set_course_info, only: [:show, :create, :new, :edit]
+  before_action :set_course_info, only: [:show, :create, :new, :edit, :update]
   before_action :set_course, only: [:votelike, :votedislike]
-  before_action :find_course, only: [:show, :edit, :update]
+  before_action :find_course, only: [:show, :edit, :update, :current_votes_delete, :destroy]
   before_action :user_validate, only: [:edit]
+  before_action :vote_validate, only: [:current_votes_delete, :destroy]
   
   def index
     @courses = Course.all
     @users = User.all
   end
+  
+  def current_votes_delete
+    @course.votes.delete_all
+    flash[:success] = "Reset Vote for this course successfully!"
+    redirect_back(fallback_location: root_path)
+  end
+  
+  def destroy
+    @course.destroy
+    flash[:success] = "Course deleted successfully!"
+    redirect_back(fallback_location: root_path)
+  end
+  
   
   def show
     
@@ -101,7 +115,13 @@ class CoursesController < ApplicationController
     end
   
     def user_validate
-      if !(logged_in? && current_user == @course.user)
+      if !((logged_in? && current_user == @course.user) || (current_user.isadmin == 1) )
+        redirect_to @course
+      end
+    end
+    
+    def vote_validate
+      if !current_user.isadmin == 1
         redirect_to @course
       end
     end

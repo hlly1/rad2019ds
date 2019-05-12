@@ -12,7 +12,7 @@
   <div class = "col-sm-7">
     <p class = "fbold">Prerequisite: <%= @course.prerequisite %>
       <% if logged_in? %>
-        <% if @course.user == current_user %>
+        <% if (@course.user == current_user) || (current_user.isadmin == 1) %>
           <%= link_to '<button class="btn btn-lg btn-primary regbtn pull-right" type="button">
            Edit this course</button>'.html_safe, edit_course_url(@course.id) %>
          <% end %>
@@ -42,10 +42,16 @@
         <%= link_to "<span class='glyphicon glyphicon-thumbs-up'>#{a}</span>".html_safe, votelike_course_path(@course), method: :post %>&nbsp &nbsp &nbsp
         <%= link_to "<span class='glyphicon glyphicon-thumbs-down'>#{b}</span>".html_safe, votedislike_course_path(@course), method: :post %>
       </span>
-      
+
     </div>
       <%= link_to '<button class="btn btn-lg btn-primary" type="button">
        Return to Courses List</button>'.html_safe, allcourse_path %>
+      <% if logged_in? %>
+        <% if (@course.user == current_user) || (current_user.isadmin == 1) %>      
+          <%= link_to '<button class="btn btn-lg btn-primary signupBtn pull-right" type="button">
+               Reset Votes</button>'.html_safe, current_votes_delete_course_url, method: :post %>
+        <% end %>
+      <% end %>
   </div>
 <% a, b = 0, 0 %>
   <div class = "col-sm-5">

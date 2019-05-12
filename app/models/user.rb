@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_many :courses
-  has_many :votes
+  has_many :courses, dependent: :destroy
+  has_many :votes, dependent: :destroy
   before_save { self.email = email.downcase }
   validates :name,  presence: true, length: { minimum: 4 }
   VALID_EMAIL_REGEX = /[A-Za-z_0-9]+\.[A-Za-z_0-9]+@\b(?i)rmit.edu.au\b/
