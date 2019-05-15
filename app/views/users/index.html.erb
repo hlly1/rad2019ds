@@ -8,16 +8,11 @@
 	<li><a href="#coordinators" data-toggle="tab">Coordinators</a></li>
 </ul>
 
-
 <div id="myTabContent" class="tab-content">
-  
   <div class="tab-pane fade in active" id="courses">
   	<% @users.each do |user| %>
-       
       <%= gravatar_for user %>
       Coordinator Name: <%= user.name %>
-      
-      
     <% end %>
   </div>
   

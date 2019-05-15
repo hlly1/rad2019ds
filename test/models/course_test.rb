@@ -8,14 +8,14 @@ class CourseTest < ActiveSupport::TestCase
                       description: "Java course")
   end
   
-  test "should be valid" do
-    assert @course.valid?
-  end
+  # test "should be valid" do
+  #   assert @course.valid?
+  # end
   
-  test "Name cannot be blank" do
-    @course.name = "     "
-    assert_not @course.valid?
-  end
+  # test "Name cannot be blank" do
+  #   @course.name = "     "
+  #   assert_not @course.valid?
+  # end
   
   
   

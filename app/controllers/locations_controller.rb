@@ -1,4 +1,5 @@
 class LocationsController < ApplicationController
+  before_action :login_validation, only: [:new, :create]
   
   def show
     @location = Location.find(params[:id])
@@ -25,5 +26,11 @@ class LocationsController < ApplicationController
 
   def location_params
     params.require(:location).permit(:name)
+  end
+  
+  def login_validation
+    if !logged_in?
+      redirect_to root_path
+    end
   end
 end

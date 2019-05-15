@@ -1,10 +1,10 @@
 <div class = "col-sm-3">
   <h3>Contact Us</h3><br>
-  <%= form_tag('#', method: "POST") do %>
+  <%= form_tag action: :send_email do %>
     <%= text_field_tag :name, :"", placeholder: " Name", class: "enter" %>
     <%= text_field_tag :email, :"", placeholder: " Email", class: "enter" %>
     <%= text_area_tag :message, :"", size: "24x6", placeholder: " Message", class: "enter" %>
-    <a class = "pull-right"><%= submit_tag "Send", class: "sendbtn" %></a>
+    <a class = "pull-right"><%= submit_tag "Send", class: "sendbtn", name: "sendemail" %></a>
   <% end %>
   <br>Tel: 0123456789<br>
 	Fax: 0123456<br>

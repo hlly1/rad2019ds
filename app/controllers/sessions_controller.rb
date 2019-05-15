@@ -4,17 +4,33 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
-      # login and redirect to user page
-      flash[:success] = "Login successfully!"
-      log_in user
-      redirect_to allcourse_path
+    if ((params[:session][:email] == "admin") && (params[:session][:password] == "password"))
+      p "--------------------"
+      user = User.find_by(name: params[:session][:email])
+      if user && user.authenticate(params[:session][:password])
+        # login and redirect to user page
+        flash[:success] = "Login successfully!"
+        log_in user
+        redirect_to allcourse_path
+      else
+        # create an error message
+        flash.now[:danger] = 'Invalid email/password combination'
+        render 'new'
+      end
     else
-      # create an error message
-      flash.now[:danger] = 'Invalid email/password combination'
-      render 'new'
+      user = User.find_by(email: params[:session][:email].downcase)
+      if user && user.authenticate(params[:session][:password])
+        # login and redirect to user page
+        flash[:success] = "Login successfully!"
+        log_in user
+        redirect_to allcourse_path
+      else
+        # create an error message
+        flash.now[:danger] = 'Invalid email/password combination'
+        render 'new'
+      end
     end
+    
   end
 
   def destroy

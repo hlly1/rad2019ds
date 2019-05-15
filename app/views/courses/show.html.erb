@@ -47,7 +47,7 @@
       <%= link_to '<button class="btn btn-lg btn-primary" type="button">
        Return to Courses List</button>'.html_safe, allcourse_path %>
       <% if logged_in? %>
-        <% if (@course.user == current_user) || (current_user.isadmin == 1) %>      
+        <% if current_user.isadmin == 1 %>      
           <%= link_to '<button class="btn btn-lg btn-primary signupBtn pull-right" type="button">
                Reset Votes</button>'.html_safe, current_votes_delete_course_url, method: :post %>
         <% end %>

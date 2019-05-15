@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:destroy]
+  before_action :logged_in_user, only: [:edit, :update, :show]
+  before_action :correct_user,   only: [:edit, :update]
+  
   def index
     @users = User.all
   end
@@ -19,17 +22,39 @@ class UsersController < ApplicationController
   end
   
   def create
-    @user = User.new(user_params)
-    if @user.save
-      # sign up successfully
-      UserMailer.welcome_email(@user).deliver_now
-      log_in @user
-      flash[:success] = "Welcome to Your Course App!"
-      redirect_to @user
-    else
-      render 'new'
-    end
+    # if ((params[:email] == "admin") && (params[:password] == "password"))
+    #   @user = User.new(name:"admin", email:"admin", password:"password", isadmin:1)
+    #   if @user.save(validate: false)
+    #     # sign up successfully
+    #     log_in @user
+    #     flash[:success] = "Welcome to Your Course App!"
+    #     redirect_to @user
+    #   else
+    #     render 'new'
+    #   end
+    # else
+      @user = User.new(user_params)
+      if @user.save
+        # sign up successfully
+        log_in @user
+        flash[:success] = "Welcome to Your Course App!"
+        redirect_to @user
+      else
+        render 'new'
+      end
+    # end
   end
+  
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      # update successfully
+      flash[:success] = "Profile updated"
+      redirect_to @user      
+    else
+      render 'edit'
+    end
+  end  
   
   def destroy
     if @user.isadmin == 0
@@ -51,5 +76,17 @@ class UsersController < ApplicationController
     def set_user
       @user = User.find(params[:id])
     end
+    
+    def logged_in_user
+      unless logged_in?
+        flash[:danger] = "Please log in."
+        redirect_to login_url
+      end
+    end
+
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless (current_user?(@user)) ||(current_user.isadmin == 1)
+    end    
     
 end
