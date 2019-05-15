@@ -1,5 +1,13 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+.profile{
+  margin-left: 50px;
+}
+
+.cwrap{
+  word-break: break-all;
+  width: 650px;
+}
 
 .fbold{
   font-weight: bold;

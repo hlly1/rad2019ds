@@ -1,4 +1,5 @@
 <% provide(:title, @user.name) %>
+<% a, b = 0, 0 %>
 <h1 class = "allco">Coordinator: <%= @user.name %></h1>
 <table class = "listcenter">
     <% @users.each do |user| %>
@@ -14,26 +15,19 @@
 </table>
 
 <% @courses.each do |course| %>
-<div class = "col-sm-9 infoback">
+<% Vote.where(course_id: course.id).each do |vote| %>
+  <% a += vote.like %>
+  <% b += vote.dislike %>
+<% end %>
+<div class = "row">
+<div class = "col-sm-3">
+</div>
+<div class = "col-sm-6 infoback profile">
   <br>
       <%= link_to course.name, course, class:"coname" %><br><br>
       <span>
         Prerequisite:
         <%= course.prerequisite %>
-      </span>
-      <br><br>
-      <span>
-      Category: 
-      <% course.categories.each do |category| %>
-      <%= link_to category.name,categories_path(category.name) %>&nbsp &nbsp
-      <% end %>
-      </span>
-      <br><br>
-      <span>
-      Location: 
-      <% course.locations.each do |location| %>
-      <%= link_to location.name, locations_path(location.id) %>&nbsp &nbsp
-      <% end %>
       </span>
       <br><br>
       <span class="timestamp">
@@ -56,5 +50,7 @@
         <%= image_tag(course.avatar_url.to_s, size: "130") if course.avatar_url.present?  %>
       </span>
 </div>
-
+<div class = "col-sm-3">
+</div>
+</div>
 <% end %>
