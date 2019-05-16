@@ -17,7 +17,7 @@ class LocationsController < ApplicationController
       flash[:success] = "Location added successfully!"
       redirect_to addlocation_path
     else
-      flash.now[:danger] = 'Invalid name for location'
+      flash.now[:danger] = 'Invalid name for location!'
       render 'new'
     end
   end  

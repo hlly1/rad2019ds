@@ -38,6 +38,7 @@
         <%= link_to "<span class='glyphicon glyphicon-thumbs-down'>#{b}</span>".html_safe, votedislike_course_path(course), method: :post %>
       </span>
       <br><br>
+      <% a, b = 0, 0 %>
       <% if logged_in? %>
         <% if current_user.isadmin == 1 %>      
           <span class = "pull-right">

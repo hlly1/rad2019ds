@@ -18,7 +18,7 @@ class CategoriesController < ApplicationController
       flash[:success] = "Category added successfully!"
       redirect_to addcategory_path
     else
-      flash.now[:danger] = 'Invalid name for location'
+      flash.now[:danger] = 'Invalid name for category!'
       render 'new'
     end
   end  
