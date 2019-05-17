@@ -24,7 +24,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     email = "foo.bar@rmit.edu.au"
     patch user_path(@user), params: { user: { name:  name,
                                               email: email,
-                                              password:"" }}
+                                              password:"Abcdefghij123." }}
     assert_redirected_to @user
     @user.reload
     assert_equal name,  @user.name

@@ -27,5 +27,6 @@ Rails.application.routes.draw do
       post :votelike, :votedislike, :current_votes_delete
     end
   end
+  get '/users/edit', to: 'users#edit' 
 
 end

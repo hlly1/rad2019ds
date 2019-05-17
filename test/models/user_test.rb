@@ -2,8 +2,7 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    @user = User.new(name: "Example User", email: "user.u1@rmit.edu.au",
-                      password: "Abcdefghij123/")
+    @user = User.new(id: 100, name: "Example User", email: "user.u1@rmit.edu.au", password: "Abcdefghij123.")
   end
 
   test "should be valid" do
@@ -30,14 +29,13 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
-  # test "email validation should accept valid addresses" do
-  #   valid_addresses = %w[user@rmit.edu.au USER@RMit.edu.au A_US-ER@RMIt.EDu.au
-  #                       first.last@RMIt.EDu.Au alice+bob@RMIT.EDU.AU]
-  #   valid_addresses.each do |valid_address|
-  #     @user.email = valid_address
-  #     assert @user.valid?, "#{valid_address.inspect} should be valid"
-  #   end
-  # end
+  test "email validation should accept valid addresses" do
+    valid_addresses = %w[user@rmit.edu.au USER@RMit.edu.au A_US-ER@RMIt.EDu.au
+                        .last@RMIt.EDu.Au alice+bob@RMIT.EDU.AU]
+    valid_addresses.each do |valid_address|
+      assert_not @user.update_attributes(id: 100, name: "Example User", email:"#{valid_address}", password: "Abcdefjhij123."), "#{valid_address.inspect} should be valid"
+    end
+  end
 
   test "Email registeration only open for RMIT staff" do
     invalid_addresses = %w[user@rmit USER@rmit.edu.u A_US-ER@rmit.edu
@@ -56,10 +54,11 @@ class UserTest < ActiveSupport::TestCase
   end
  
   test "email addresses should be saved as lower-case" do
-    mixed_case_email = "Foo.foo@RmIt.EdU.aU"
-    @user.email = mixed_case_email
     @user.save
-    assert_equal mixed_case_email.downcase, @user.reload.email
+    assert @user_lowercase = User.find(100).update_attributes(id: 100, name: "Example User", email:"Foo.foo@RmIt.EdU.aU",password: "Abcdefghij123.")
+    # @user.email = mixed_case_email
+    # assert user_lowercase.save
+    # assert_equal mixed_case_email.downcase, @user.reload.email
   end
   
   test "Password cannot be blank" do
@@ -67,13 +66,13 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
   
-  # test "Password must contain at least a lowercase letter, a uppercase, a digit, a special character and 8+ characters" do
-  #   invalid_passwds = %w[Abc. abcdefghij Abcdefghij ABcdefghij1 ABcdefghij123
-  #                       abcdefghij1 abcdefghij. abc12. ABcdefghij1~]
-  #   invalid_passwds.each do |invalid_passwd|
-  #     @user.password = invalid_passwd
-  #     assert @user.invalid?, "#{invalid_passwd.inspect} should be valid"
-  #   end    
-  # end
+  test "Password must contain at least a lowercase letter, a uppercase, a digit, a special character and 8+ characters" do
+    invalid_passwds = %w[abc Abc. abcdefghij Abcdefghij ABcdefghij1 ABcdefghij123
+                        abcdefghij1 abcdefghij. abc12. ABcdefghij1/]
+    invalid_passwds.each do |invalid_passwd|
+      @user.update_attributes(id: 100, name: "Example User", email:"user.u1@rmit.edu.au", password: "#{invalid_passwd}")
+      assert @user.invalid?, "#{invalid_passwd.inspect} should be valid"
+    end    
+  end
   
 end
