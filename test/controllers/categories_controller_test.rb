@@ -2,17 +2,32 @@ require 'test_helper'
 
 class CategoriesControllerTest < ActionDispatch::IntegrationTest
   def setup
-    @c = categories(:Web)
+    @user = User.create(id: 1000, name: "Example User", email: "user.u1@rmit.edu.au", password: "Abcdefghij123.", isadmin: 0)
+    get login_path
+    post login_path, params: { session: { email:    "user.u1@rmit.edu.au",
+                                          password: "Abcdefghij123." } }
   end
   
-  # test "category add successfully" do
-  #   get addcategory_path
-  #   assert_difference 'Category.count', 1 do
-  #   post addcategory_path, params: { category: { name:  "Web Development"} }
-  #   end
-  #   follow_redirect!
-  #   assert_template addcategory_path
-  #   assert_not flash.nil?
-  # end
+  test "cannot access category creating when not logged in" do
+    delete logout_path
+    #access the page
+    get addcategory_path
+    assert_redirected_to root_path
+    assert_not flash.nil?
+    #or post data to action in some way
+    assert_difference 'Category.count', 0 do
+      post addcategory_path, params: { category: { name:  "Category Test"} }
+    end
+  end
+  
+  
+  test "category create successfully" do
+    get addcategory_path
+    assert_difference 'Category.count', 1 do
+      post addcategory_path, params: { category: { name:  "Category Test2"} }
+    end
+    assert_redirected_to addcategory_path
+    assert_not flash.nil?
+  end
 
 end

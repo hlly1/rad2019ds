@@ -121,7 +121,7 @@ class CoursesController < ApplicationController
     end
   
     def user_validate
-      if !((current_user == @course.user) || (current_user&.isadmin == 1) )
+      if !((current_user == @course.user) || (current_user.isadmin == 1) )
         redirect_to allcourse_path
       end
     end

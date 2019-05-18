@@ -4,14 +4,7 @@ class User < ApplicationRecord
   before_validation{
     self.email = self.email.downcase
   }
-  before_save { 
-    
-    if (self.email == "admin") && (self.password == "password")
-      admin = User.new(name:"admin", email:"admin", password:"password",isadmin:1)
-      admin.save(validate: false)
-    end    
-    
-  }
+
   validates :name,  presence: true, length: { minimum: 4 }
   VALID_EMAIL_REGEX = /[A-Za-z_0-9]+\.+[A-Za-z_0-9]+@\b(?i)rmit.edu.au\b/
   validates :email, presence: true, length: { minimum: 4 },
@@ -36,10 +29,5 @@ class User < ApplicationRecord
   def added_in?(course)
     self.courses.include?(course)
   end
-  
-  # private
-  #   def admin_validate
 
-  #   end
-  
 end
