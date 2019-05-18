@@ -3,10 +3,6 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:edit, :update, :show]
   before_action :correct_user,   only: [:edit, :update]
   
-  def index
-    @users = User.all
-  end
-  
   def edit
     @user = User.find(params[:id])
   end
@@ -23,17 +19,6 @@ class UsersController < ApplicationController
   end
   
   def create
-    # if ((params[:email] == "admin") && (params[:password] == "password"))
-    #   @user = User.new(name:"admin", email:"admin", password:"password", isadmin:1)
-    #   if @user.save(validate: false)
-    #     # sign up successfully
-    #     log_in @user
-    #     flash[:success] = "Welcome to Your Course App!"
-    #     redirect_to @user
-    #   else
-    #     render 'new'
-    #   end
-    # else
       @user = User.new(user_params)
       if @user.save
         # sign up successfully

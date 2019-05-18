@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
-  
+
   get  '/allcourse', to:  'courses#index'
   get '/categories/:name', to: 'categories#show', as: 'categories'
   get '/locations/:id', to: 'locations#show', as: 'locations'
@@ -28,10 +28,5 @@ Rails.application.routes.draw do
     end
   end
   get '/users/edit', to: 'users#edit' 
- 
-  %w(404 422 500).each do |code|
-    get code, to: "errors#show", code: code
-  end
-  
-  
+
 end

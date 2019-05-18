@@ -2,16 +2,14 @@
 <% a, b = 0, 0 %>
 <h1 class = "allco">Coordinator: <%= @user.name %></h1>
 <table class = "listcenter">
-    <% @users.each do |user| %>
+    
     <tr>
-        <th><%= gravatar_for user %><br></th>
+        <th><%= gravatar_for @user %><br></th>
     </tr>
     
     <tr>
-        <td><h5>Coordinator Name: <%= user.name %></h5></td>
+        <td><h5>Coordinator Name: <%= @user.name %></h5></td>
     </tr>
-    
-    <% end %>
 </table>
 
 <% @courses.each do |course| %>
