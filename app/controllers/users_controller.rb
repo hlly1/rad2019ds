@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:destroy]
-  before_action :logged_in_user, only: [:edit, :update, :show]
+  before_action :logged_in_user, only: [:edit, :update, :show, :destroy]
   before_action :correct_user,   only: [:edit, :update]
   
   def edit
@@ -43,11 +43,11 @@ class UsersController < ApplicationController
   end  
   
   def destroy
-    if @user.isadmin == 0
+    if ((@user.isadmin == 0) && (current_user.isadmin == 1))
       @user.destroy
       flash[:success] = 'Coordinator deleted successfully!'
       redirect_back(fallback_location: root_path)
-    elsif @user.isadmin == 1
+    elsif ((@user.isadmin == 1) && (current_user.isadmin == 1))
       flash[:danger] = "Admin cannot be deleted!"
       redirect_back(fallback_location: root_path)
     end
