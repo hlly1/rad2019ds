@@ -10,13 +10,13 @@ class User < ApplicationRecord
   # validates :email, presence: true, length: { minimum: 4 },
   #                   format: { with: VALID_EMAIL_REGEX, :message => "Registration only open for RMIT staff"},
   #                   uniqueness: { case_sensitive: false }
-  # has_secure_password
+  has_secure_password
   # VALID_PASSWD_REGEX = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$&+,:;=?@#|'<>.^*()%!~]).{8,}$/
 
-  # validates :password, presence: true,
-  #                     format: { with: VALID_PASSWD_REGEX, :message => 
-  #                     "must contains at least a lowercase letter, a uppercase,
-  #                     a digit, a special character and 8+ characters", :multiline => true}
+  validates :password, presence: true#,
+                      # format: { with: VALID_PASSWD_REGEX, :message => 
+                      # "must contains at least a lowercase letter, a uppercase,
+                      # a digit, a special character and 8+ characters", :multiline => true}
                        #allow_nil: true 
   
   
