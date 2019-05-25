@@ -30,6 +30,11 @@
             <br>
                 <%= link_to course.name, '#',class:"coname" %><br><br>
                 <span>
+                  Prerequisite:
+                  <%= course.prerequisite %>
+                </span>
+                <br><br>
+                <span>
                 Category: 
                 <% course.categories.each do |category| %>
                 <%= link_to category.name, categories_path(category.name) %>&nbsp &nbsp
