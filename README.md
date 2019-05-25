@@ -1,9 +1,19 @@
-# Rapid Application Development Assignment1
+# Rapid Application Development Assignment
 
-This is an assignment developed by Dan Wang and Hongyang Lyu.
+This is an assignment developed by: 
 
-## Client Request
+Dan Wang: s3617881
 
+Hongyang Lyu: s3694521
+
+## Level we attempted
+
+We attempted 80+ Level
+
+## Time sheet for each team member
+
+## Heroku deployment URL and the last Heroku deployment log
+rad2019ds.herokuapp.com
 This assignment is developed based on the following fictitious message from the school admin
 team.
 

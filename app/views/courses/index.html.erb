@@ -92,7 +92,9 @@
             <td><h5>Coordinator Name: <%= user.name %>&nbsp&nbsp
                   <% if logged_in? %>
                     <% if current_user.isadmin == 1 %>            
-                      <%= link_to "delete", user, method: :delete, data:{confirm:"Are you sure?"} %>
+                      <%= link_to "delete", user, method: :delete, data:{confirm:"Are you sure?"} %>&nbsp
+                      <%= link_to "update", edit_user_path(user.id)  %>&nbsp
+                      <%= link_to "profile", user_path(user.id)  %>
                     <% end %>
                   <% end %>
                 </h5></td>

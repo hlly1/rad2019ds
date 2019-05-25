@@ -17,7 +17,7 @@ class User < ApplicationRecord
                       format: { with: VALID_PASSWD_REGEX, :message => 
                       "must contains at least a lowercase letter, a uppercase,
                       a digit, a special character and 8+ characters", :multiline => true}
-                       #allow_nil: true 
+                      #allow_nil: true 
   
   
   def User.digest(string)
