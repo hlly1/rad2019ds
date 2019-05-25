@@ -3,15 +3,25 @@
 <% if !@location.courses.any? %>
   <h3>There are no courses scheduled in Location <%= @location.name %>, please add it via New Course</h3>
 <% else %>
+
+<% a, b = 0, 0 %>
+
 <ul id="myTab" class="nav nav-tabs">
   <li class="active"><a href="#courses" data-toggle="tab">Courses</a></li>
 	<li><a href="#coordinators" data-toggle="tab">Coordinators</a></li>
 </ul>
+
 <div id="myTabContent" class="tab-content">
 <div class="tab-pane fade in active" id="courses">
   <% @locations.each do |location| %>
     <% if location.id == @location.id %>
       <% location.courses.each do |course|  %>
+      
+        <% Vote.where(course: course.id).each do |vote| %>
+          <% a += vote.like %>
+          <% b += vote.dislike %>
+        <% end %>      
+      
         <div class = "row bo">
           
           <div class = "col-sm-3">
@@ -52,9 +62,10 @@
                  <%= time_ago_in_words(course.created_at) %> ago.
                 </span>
                 <span class = "pull-right">
-                  <a><span class="glyphicon glyphicon-thumbs-up">0</span></a>&nbsp &nbsp &nbsp
-                 <a><span class="glyphicon glyphicon-thumbs-down">0</span></a>
+                  <%= link_to "<span class='glyphicon glyphicon-thumbs-up'>#{a}</span>".html_safe, votelike_course_path(course), method: :post %>&nbsp &nbsp &nbsp
+                  <%= link_to "<span class='glyphicon glyphicon-thumbs-down'>#{b}</span>".html_safe, votedislike_course_path(course), method: :post %>
                 </span>
+                <% a, b = 0, 0 %>
           </div>
            
         </div>
